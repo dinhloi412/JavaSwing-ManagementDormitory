@@ -65,6 +65,7 @@ private DefaultTableModel tblModel;
         txtFullName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         cmbRoom = new javax.swing.JComboBox<>();
+        ckStatus = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         cmbMonth = new javax.swing.JComboBox<>();
@@ -77,6 +78,7 @@ private DefaultTableModel tblModel;
         txtPrice2 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtTotalPrice = new javax.swing.JTextField();
+        txtDate = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
         kButton11 = new com.k33ptoo.components.KButton();
         BtnDelete = new com.k33ptoo.components.KButton();
@@ -140,6 +142,7 @@ private DefaultTableModel tblModel;
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 86));
 
         jPanel1.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
@@ -178,6 +181,12 @@ private DefaultTableModel tblModel;
             }
         });
         jPanel3.add(cmbRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 160, 30));
+
+        ckStatus.setBackground(new java.awt.Color(255, 255, 255));
+        ckStatus.setText("Status");
+        jPanel3.add(ckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 240, 320));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
@@ -218,6 +227,10 @@ private DefaultTableModel tblModel;
         txtTotalPrice.setText("0đ");
         txtTotalPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(71, 120, 197)));
 
+        txtDate.setBackground(new java.awt.Color(255, 255, 255));
+        txtDate.setOpaque(false);
+        txtDate.setPreferredSize(new java.awt.Dimension(74, 30));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -231,12 +244,16 @@ private DefaultTableModel tblModel;
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
+                                    .addComponent(cmbMonth, 0, 160, Short.MAX_VALUE)
+                                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(rdParking)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(rdWash))
-                                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(rdParking)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(rdWash)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -266,18 +283,27 @@ private DefaultTableModel tblModel;
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(13, 13, 13)
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdParking)
-                            .addComponent(rdWash)
-                            .addComponent(txtPrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel9))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                            .addComponent(rdWash)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, 0)
+                        .addComponent(txtPrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
@@ -323,12 +349,16 @@ private DefaultTableModel tblModel;
         });
         jPanel5.add(kButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 3, 68, 71));
 
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 370, 80));
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("ID Bill: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
 
         txtFindByIDBill.setBackground(new java.awt.Color(243, 243, 243));
         txtFindByIDBill.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
         txtFindByIDBill.setOpaque(false);
+        jPanel1.add(txtFindByIDBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 70, 30));
 
         kButton9.setBackground(new java.awt.Color(243, 243, 243));
         kButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_search_contacts_20px.png"))); // NOI18N
@@ -340,10 +370,12 @@ private DefaultTableModel tblModel;
                 kButton9ActionPerformed(evt);
             }
         });
+        jPanel1.add(kButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 40, -1));
 
         kButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
         kButton15.setkAllowGradient(false);
         kButton15.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(kButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 381, 68, 71));
 
         TableBillInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
         TableBillInfo.setkAllowGradient(false);
@@ -353,59 +385,7 @@ private DefaultTableModel tblModel;
                 TableBillInfoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TableBillInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(kButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(txtFindByIDBill, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(82, 82, 82))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFindByIDBill, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2)))
-                        .addGap(5, 5, 5)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TableBillInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
-        );
+        jPanel1.add(TableBillInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 381, 68, 71));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 830, 460));
     }// </editor-fold>//GEN-END:initComponents
@@ -424,7 +404,7 @@ private DefaultTableModel tblModel;
      private  void initTable()
     {
         tblModel= new DefaultTableModel();
-        tblModel.setColumnIdentifiers(new String[]{"IDBill","ID Student","FullName","IDRoom","Month","Price1","Category","Price2","TotalPrice"});
+        tblModel.setColumnIdentifiers(new String[]{"IDBill","ID Student","FullName","IDRoom","Month","Price1","Category","Price2","TotalPrice","Date"});
         tableBill.setModel(tblModel);
       
     }
@@ -438,7 +418,7 @@ private DefaultTableModel tblModel;
             for(BillModel it:list)
             {
                 tblModel.addRow(new Object[]{it.getIDBill(),
-                it.getIDStdudent(),it.getFullName(),it.getIDRooms(),it.getMonth(),it.getPrice1(),it.getCategory(),it.getPrice2(),it.getTotalPrice()
+                it.getIDStdudent(),it.getFullName(),it.getIDRooms(),it.getMonth(),it.getPrice1(),it.getCategory(),it.getPrice2(),it.getTotalPrice(),it.getDate()
                 
             });
             }
@@ -541,6 +521,10 @@ private DefaultTableModel tblModel;
             bm.setPrice1(Integer.parseInt(txtPrice1.getText()));
             bm.setPrice2(Integer.parseInt(txtPrice2.getText()));
             bm.setTotalPrice((int) Float.parseFloat(txtTotalPrice.getText()));
+            bm.setDate(txtDate.getDate());
+            bm.setStatus(ckStatus.isSelected());
+
+            
             if(rdParking.isSelected())
             {
                 bm.setCategory(rdParking.getText());
@@ -694,6 +678,7 @@ private DefaultTableModel tblModel;
     private com.k33ptoo.components.KButton BtnDelete;
     private com.k33ptoo.components.KButton TableBillInfo;
     private com.k33ptoo.components.KButton btnUpdate;
+    private javax.swing.JCheckBox ckStatus;
     private javax.swing.JComboBox<String> cmbMonth;
     private javax.swing.JComboBox<String> cmbRoom;
     private javax.swing.JDialog jDialog1;
@@ -720,6 +705,7 @@ private DefaultTableModel tblModel;
     private javax.swing.JCheckBox rdParking;
     private javax.swing.JCheckBox rdWash;
     private javax.swing.JTable tableBill;
+    private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtFindByIDBill;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtIDStudent;

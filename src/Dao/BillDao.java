@@ -13,6 +13,7 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.rowset.serial.SerialBlob;
@@ -61,7 +62,10 @@ public class BillDao {
             psmt.setString(6, bm.getCategory());
             psmt.setInt(7, bm.getPrice2());
             psmt.setInt(8,bm.getTotalPrice());
-
+             SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+            String date=sdf.format(bm.getDate());
+            psmt.setString(9, date);
+            psmt.setBoolean(10, bm.getStatus());
             return psmt.executeUpdate()>0; 
         }
         
@@ -69,7 +73,7 @@ public class BillDao {
       public boolean insert(BillModel bm) throws Exception
     {
       
-        String sql="INSERT INTO Bill (IDStdudent ,IDRooms,FullName,Month,Price1,Category,Price2,TotalPrice)"+ "values(?,?,?,?,?,?,?,?)";
+        String sql="INSERT INTO Bill (IDStdudent ,IDRooms,FullName,Month,Price1,Category,Price2,TotalPrice,Date,Status)"+ "values(?,?,?,?,?,?,?,?,?,?)";
     
         try(
             Connection con= DatabaseHelper.openConnection();
@@ -85,6 +89,12 @@ public class BillDao {
             psmt.setString(6, bm.getCategory());
             psmt.setInt(7, bm.getPrice2());
             psmt.setInt(8,bm.getTotalPrice());
+            // format ngày tháng sử dụng JCacularChooser
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+            String date=sdf.format(bm.getDate());
+            psmt.setString(9, date);
+            //-----------------------------//
+            psmt.setBoolean(10, bm.getStatus());
             return psmt.executeUpdate()>0; 
         }
         
@@ -115,6 +125,7 @@ public class BillDao {
                     bm.setCategory(rs.getString("Category"));
                     bm.setPrice2(rs.getInt("Price2"));      
                     bm.setTotalPrice(rs.getInt("TotalPrice"));
+                    bm.setDate(rs.getDate("Date"));
                     return bm;
                     
                 }
@@ -151,6 +162,7 @@ public class BillDao {
                     bm.setCategory(rs.getString("Category"));
                     bm.setPrice2(rs.getInt("Price2"));  
                     bm.setTotalPrice(rs.getInt("TotalPrice"));
+                    bm.setDate(rs.getDate("Date"));
                     list.add(bm);  
                 }
                 return list;

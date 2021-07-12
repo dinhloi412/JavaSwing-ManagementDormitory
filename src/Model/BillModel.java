@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
-
+import java.util.Date;
 /**
  *
  * @author LoiDinh
@@ -19,10 +19,12 @@ public class BillModel {
     private String Category;
     private int Price2;
     private int TotalPrice;
+    private Date Date;
+    private Boolean Status;
     public BillModel() {
     }
 
-    public BillModel(int IDBill, int IDStdudent, int IDRooms, String FullName, int Month, int Price1, String Category, int Price2,  int TotalPrice) {
+    public BillModel(int IDBill, int IDStdudent, int IDRooms, String FullName, int Month, int Price1, String Category, int Price2,  int TotalPrice, Date Date, Boolean Status) {
         this.IDBill = IDBill;
         this.IDStdudent = IDStdudent;
         this.IDRooms = IDRooms;
@@ -32,6 +34,8 @@ public class BillModel {
         this.Category = Category;
         this.Price2 = Price2;
         this.TotalPrice=TotalPrice;
+        this.Date=Date;
+        this.Status=Status;
     }
 
     public int getIDBill() {
@@ -104,6 +108,22 @@ public class BillModel {
 
     public void setTotalPrice(int TotalPrice) {
         this.TotalPrice = TotalPrice;
+    }
+
+    public Date getDate() {
+        return Date;
+    }
+
+    public void setDate(Date Date) {
+        this.Date = Date;
+    }
+
+    public Boolean getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Boolean Status) {
+        this.Status = Status;
     }
     
     
