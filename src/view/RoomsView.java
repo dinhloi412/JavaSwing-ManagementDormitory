@@ -5,13 +5,17 @@
  */
 package view;
 
+import Dao.BillDao;
 import Dao.RoomsDao;
+import Dao.StudentDao;
 import Model.RoomModel;
+import Model.StudentModel;
 import helper.DataValidator;
 import helper.MessageDialogHelper;
 import java.awt.Cursor;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author LoiDinh
@@ -93,6 +97,7 @@ private DefaultTableModel tblModel;
         jLabel5 = new javax.swing.JLabel();
         txtIDroom = new javax.swing.JTextField();
         btnCreateRoom1 = new com.k33ptoo.components.KButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(830, 582));
@@ -210,6 +215,14 @@ private DefaultTableModel tblModel;
         });
         jPanel4.add(btnCreateRoom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 161, 107, -1));
 
+        jButton1.setText("uPdate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -321,10 +334,36 @@ private DefaultTableModel tblModel;
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCreateRoom1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        
+        try {
+            RoomModel rm= new RoomModel();
+            rm.setIDRooms(Integer.parseInt(txtIDroom.getText()));
+         
+//            sv.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(txtBirthday.getText()));
+            BillDao dao= new BillDao();
+            if(dao.updateCheckRoom(rm))
+            {
+                MessageDialogHelper.showMessageDialog(parentFrom, "Sinh viên đã được cập nhật", "Thông báo");
+               
+            }
+            else
+            {
+                MessageDialogHelper.showConfirmDialog(parentFrom, "Sinh viên chưa được cập nhật", "Cảnh báo");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), " Lỗi");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnCreateRoom;
     private com.k33ptoo.components.KButton btnCreateRoom1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -408,6 +408,7 @@ private DefaultTableModel tblModel;
         tableBill.setModel(tblModel);
       
     }
+     
      private void LoadDatatoTable()
     {
        try {
@@ -485,6 +486,7 @@ private DefaultTableModel tblModel;
 //                cmbMonth.setSelectedItem(bm.getMonth());
                 txtPrice1.setText(String.format("%d",bm.getPrice1()));
                 txtPrice2.setText(String.format("%d",bm.getPrice2()));
+                txtDate.setDate(bm.getDate());
                 
                 
                 
@@ -538,15 +540,16 @@ private DefaultTableModel tblModel;
                 bm.setCategory("2");
             }
 //            bm.setCategory(rdParking.getText());
+            RoomModel rm= new RoomModel();
             BillDao dao= new BillDao();
             if(dao.insert(bm))
             {
-                MessageDialogHelper.showMessageDialog(parentFrom, "Sinh viên được cập nhật", "Thông báo");
-//                LoadDatatoTable();
+                MessageDialogHelper.showMessageDialog(parentFrom, "Hoá đơn đã được lưu", "Thông báo");
+                
             }
             else
             {
-                MessageDialogHelper.showConfirmDialog(parentFrom, "Sinh viên chưa được cập nhật", TOOL_TIP_TEXT_KEY);
+                MessageDialogHelper.showConfirmDialog(parentFrom, "Hoá đơn chưa được lưu", TOOL_TIP_TEXT_KEY);
             }
             
         } catch (Exception e) {
@@ -627,7 +630,9 @@ private DefaultTableModel tblModel;
             
             bm.setPrice1(Integer.parseInt(txtPrice1.getText()));
             bm.setPrice2(Integer.parseInt(txtPrice2.getText()));
-            
+            bm.setTotalPrice((int) Float.parseFloat(txtTotalPrice.getText()));
+//            bm.setDate(txtDate.getDate());
+            bm.setStatus(ckStatus.isSelected());
             if(rdParking.isSelected())
             {
                 bm.setCategory(rdParking.getText());
@@ -667,6 +672,7 @@ private DefaultTableModel tblModel;
     private void TableBillInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TableBillInfoActionPerformed
         jDialog1.setVisible(true);
         jDialog1.setLocationRelativeTo(null);
+        LoadDatatoTable();
     }//GEN-LAST:event_TableBillInfoActionPerformed
 // load tabe 
     private void tableBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBillMouseClicked

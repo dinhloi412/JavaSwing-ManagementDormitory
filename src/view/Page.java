@@ -257,7 +257,7 @@ private JPanel childPanel;
     }//GEN-LAST:event_kButton3ActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-       
+       loadJPanel(new RoomInfoView());
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed

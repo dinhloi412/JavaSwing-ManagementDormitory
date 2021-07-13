@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.rowset.serial.SerialBlob;
-
+import java.sql.CallableStatement;
 /**
  *
  * @author LoiDinh
@@ -41,11 +41,34 @@ public class BillDao {
         }
         
     }
+      // tang giá trị của bed mỗi khi insert
+      public boolean updateCheckRoom(RoomModel rm) throws Exception
+    {
+        
+        String sql="{call SP_Update_Points(?)}";
+    
+        try(
+            Connection con= DatabaseHelper.openConnection();
+            CallableStatement  psmt=con.prepareCall(sql);
+
+            )
+            
+        {
+            
+          
+            psmt.setInt(1, rm.getIDRooms());
+            
+            
+            return psmt.executeUpdate()>0; 
+        }
+        
+    }
+      
       public boolean update(BillModel bm) throws Exception
     {
         
         String sql="UPDATE dbo.Bill"+ 
-                " SET IDStdudent = ?,IDRooms = ?,FullName = ?,Month = ? ,Price1= ?,Category = ?,Price2 = ? where IDBill= ? ";
+                " SET IDStdudent = ?,IDRooms = ?,FullName = ?,Month = ? ,Price1= ?,Category = ?,Price2 = ?,TotalPrice=?,Status=? where IDBill= ? ";
     
         try(
             Connection con= DatabaseHelper.openConnection();
@@ -53,7 +76,8 @@ public class BillDao {
 
             )
         {
-            psmt.setInt(8, bm.getIDBill());
+            //note:::id không được update chỗ này :<
+            psmt.setInt(10, bm.getIDBill());
             psmt.setInt(1, bm.getIDStdudent());
             psmt.setInt(2, bm.getIDRooms());
             psmt.setString(3, bm.getFullName());
@@ -62,10 +86,11 @@ public class BillDao {
             psmt.setString(6, bm.getCategory());
             psmt.setInt(7, bm.getPrice2());
             psmt.setInt(8,bm.getTotalPrice());
-             SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-            String date=sdf.format(bm.getDate());
-            psmt.setString(9, date);
-            psmt.setBoolean(10, bm.getStatus());
+            // format ngày tháng sử dụng JCacularChooser
+//             SimpleDateFormat sdf= new SimpleDateFormat("MM-dd-yyyy");
+//            String date=sdf.format(bm.getDate());
+//            psmt.setString(10, date);
+            psmt.setBoolean(9, bm.getStatus());
             return psmt.executeUpdate()>0; 
         }
         
@@ -126,6 +151,7 @@ public class BillDao {
                     bm.setPrice2(rs.getInt("Price2"));      
                     bm.setTotalPrice(rs.getInt("TotalPrice"));
                     bm.setDate(rs.getDate("Date"));
+                    
                     return bm;
                     
                 }
