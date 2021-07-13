@@ -5,48 +5,117 @@
  */
 package view;
 
+import Dao.BillDao;
 import Dao.RoomsDao;
+import Dao.StudentDao;
+import Model.BillModel;
 import Model.RoomModel;
+import Model.StudentModel;
 import helper.DatabaseHelper;
+import helper.MessageDialogHelper;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LoiDinh
  */
 public class RoomInfoView extends javax.swing.JPanel {
-
+//    JList LoadJlist= new JList();
+     private DefaultTableModel tblModel;
+     private Page parentFrom;
     /**
      * Creates new form RoomInfoView
      */
     public RoomInfoView() {
         initComponents();
-        loadCMB();
+        
+        initTable();
+        LoadDatatoTable();
+       
+        
+        
     }
-     private void loadCMB()
+     private  void initTable()
+     {
+         tblModel= new DefaultTableModel();
+        tblModel.setColumnIdentifiers(new String[]{"IDRooms","Bed","LimitedBed"});
+        TableRoomInfo.setModel(tblModel);
+     }
+    
+    private void LoadDatatoTable()
     {
-//        int i=0;
         try {
-            Connection con= DatabaseHelper.openConnection();
-            Statement st= con.createStatement();
-            ResultSet rs= st.executeQuery(" select IDRooms from Rooms ");
-            cmbIDRoom.removeAllItems();
-            while(rs.next())
+            RoomsDao dao= new RoomsDao();
+            List<RoomModel> list=dao.FindAll();
+            tblModel.setRowCount(0);
+            for(RoomModel it:list)
             {
+                tblModel.addRow(new Object[]{
+                it.getIDRooms(),it.getBed(),it.getLimitedBed()
                 
-                cmbIDRoom.addItem(rs.getString("IDRooms"));
+            });
             }
-            rs.close();
-            con.close();
-            
-            
+            tblModel.fireTableDataChanged();
+
         } catch (Exception e) {
             e.printStackTrace();
+            MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), "Lỗi");
         }
     }
+    public int getsum()
+    {
+        int rowsCount= TableRoomInfo.getRowCount();
+        int sum=0;
+        for(int i=0;i<rowsCount;i++)
+        {
+            sum=sum+Integer.parseInt(TableRoomInfo.getValueAt(i, 3).toString());    
+        }
+        return sum;
+    }
+    
+     
+     // get dữ liệu lên list
+     //-----------------------------------//
+//    public void math()
+//    {
+//        lblSumRomm.setText(Integer.toString(getsum()));
+//    }
+//     private void LoadJlist()
+//    {
+////        int i=0;
+//        try {
+//            Connection con= DatabaseHelper.openConnection();
+//            Statement st= con.createStatement();
+//            ResultSet rs= st.executeQuery(" select IDRooms from Bill ");
+//            DefaultListModel listModel = new DefaultListModel();
+//
+//            while(rs.next())
+//            {
+//                
+//                listModel.addElement(rs.getString("IDRooms"));
+//                
+//            }
+//            ListRoom.setModel(listModel);
+//            rs.close();
+//            con.close();
+//            JList list= new JList(listModel);
+//            
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,33 +126,112 @@ public class RoomInfoView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        cmbIDRoom = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
+        kButton1 = new com.k33ptoo.components.KButton();
+        kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableRoomInfo = new javax.swing.JTable();
+        kGradientPanel8 = new com.k33ptoo.components.KGradientPanel();
+        kGradientPanel9 = new com.k33ptoo.components.KGradientPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblSumRomm = new javax.swing.JLabel();
+        kGradientPanel10 = new com.k33ptoo.components.KGradientPanel();
+        jLabel4 = new javax.swing.JLabel();
+        tblSumBedEmpty = new javax.swing.JLabel();
+        kGradientPanel11 = new com.k33ptoo.components.KGradientPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        btnSearch = new com.k33ptoo.components.KButton();
+
+        jList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { " " };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(458, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(139, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(71, 120, 197));
         jPanel2.setPreferredSize(new java.awt.Dimension(268, 86));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Room Info");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 22, -1, -1));
 
-        jTextField1.setText("SEARCH...");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 2));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 43, 154, 32));
+        kButton1.setForeground(new java.awt.Color(71, 120, 197));
+        kButton1.setText("CẬP NHẬT DỮ LIỆU");
+        kButton1.setkAllowGradient(false);
+        kButton1.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        kButton1.setkForeGround(new java.awt.Color(71, 120, 197));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
-        jPanel2.add(cmbIDRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 44, 128, 30));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel1.setkEndColor(new java.awt.Color(78, 67, 118));
+        kGradientPanel1.setkFillBackground(false);
+        kGradientPanel1.setkStartColor(new java.awt.Color(43, 88, 118));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableRoomInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -94,54 +242,198 @@ public class RoomInfoView extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setRowHeight(26);
-        jTable1.setSelectionBackground(new java.awt.Color(71, 120, 197));
-        jScrollPane1.setViewportView(jTable1);
+        TableRoomInfo.setRowHeight(30);
+        jScrollPane1.setViewportView(TableRoomInfo);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        kGradientPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel8.setForeground(new java.awt.Color(255, 255, 255));
+        kGradientPanel8.setkEndColor(new java.awt.Color(78, 67, 118));
+        kGradientPanel8.setkFillBackground(false);
+        kGradientPanel8.setkStartColor(new java.awt.Color(43, 88, 118));
+
+        kGradientPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
+        kGradientPanel9.setkEndColor(new java.awt.Color(66, 134, 244));
+        kGradientPanel9.setkFillBackground(false);
+        kGradientPanel9.setkStartColor(new java.awt.Color(55, 59, 68));
+        kGradientPanel9.setkTransparentControls(false);
+        kGradientPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("TỔNG SỐ GIƯỜNG HIỆN TẠI");
+        kGradientPanel9.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 14, 220, -1));
+
+        lblSumRomm.setFont(new java.awt.Font("Segoe UI", 0, 100)); // NOI18N
+        lblSumRomm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSumRomm.setText("0");
+        kGradientPanel9.add(lblSumRomm, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 40, 220, -1));
+
+        kGradientPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
+        kGradientPanel10.setkEndColor(new java.awt.Color(66, 134, 244));
+        kGradientPanel10.setkFillBackground(false);
+        kGradientPanel10.setkStartColor(new java.awt.Color(55, 59, 68));
+        kGradientPanel10.setkTransparentControls(false);
+        kGradientPanel10.setMinimumSize(new java.awt.Dimension(207, 178));
+        kGradientPanel10.setPreferredSize(new java.awt.Dimension(207, 178));
+        kGradientPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("TỔNG SỐ GIƯỜNG TRỐNG");
+        kGradientPanel10.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 14, 220, -1));
+
+        tblSumBedEmpty.setFont(new java.awt.Font("Segoe UI", 0, 100)); // NOI18N
+        tblSumBedEmpty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tblSumBedEmpty.setText("0");
+        kGradientPanel10.add(tblSumBedEmpty, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 40, 230, -1));
+
+        kGradientPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
+        kGradientPanel11.setkEndColor(new java.awt.Color(66, 134, 244));
+        kGradientPanel11.setkFillBackground(false);
+        kGradientPanel11.setkStartColor(new java.awt.Color(55, 59, 68));
+        kGradientPanel11.setkTransparentControls(false);
+        kGradientPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("SỐ LƯỢNG SINH VIÊN ĐANG Ở");
+        kGradientPanel11.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 10, 230, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 100)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("0");
+        kGradientPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 44, 220, -1));
+
+        txtSearch.setText("SEARCH...");
+        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 2));
+        txtSearch.setPreferredSize(new java.awt.Dimension(185, 45));
+
+        btnSearch.setkAllowGradient(false);
+        btnSearch.setkBackGroundColor(new java.awt.Color(71, 120, 197));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout kGradientPanel8Layout = new javax.swing.GroupLayout(kGradientPanel8);
+        kGradientPanel8.setLayout(kGradientPanel8Layout);
+        kGradientPanel8Layout.setHorizontalGroup(
+            kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel8Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(kGradientPanel8Layout.createSequentialGroup()
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel8Layout.createSequentialGroup()
+                        .addComponent(kGradientPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(kGradientPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(kGradientPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59))
+        );
+        kGradientPanel8Layout.setVerticalGroup(
+            kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(kGradientPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kGradientPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(kGradientPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 83, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
+        kGradientPanel1.setLayout(kGradientPanel1Layout);
+        kGradientPanel1Layout.setHorizontalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(kGradientPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+        kGradientPanel1Layout.setVerticalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(kGradientPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        int numrow =TableRoomInfo.getRowCount();
+        int tot=0;
+        int tot2=0;
+        for( int i=0;i< numrow ;i++)
+        {
+            int val=Integer.valueOf(TableRoomInfo.getValueAt(i, 1).toString());
+            tot+=val;
+            int val1=Integer.valueOf(TableRoomInfo.getValueAt(i, 2).toString());
+             tot2+=val1;
+        }
+        lblSumRomm.setText(Integer.toString(tot));
+        tblSumBedEmpty.setText(Integer.toString(tot2));
+ 
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+//           try {
+//            BillDao dao= new BillDao();
+//            BillModel bm= dao.FindByIDBill(Integer.parseInt(txtSearch.getText()));
+//            if(bm!=null)
+//            {
+//                txtIDStudent.setText(String.format("%d", bm.getIDStdudent()));
+//                txtFullName.setText(bm.getFullName());
+//                cmbRoom.setSelectedItem(bm.getIDRooms());
+////                cmbMonth.setSelectedItem(bm.getMonth());
+//                txtPrice1.setText(String.format("%d",bm.getPrice1()));
+//                txtPrice2.setText(String.format("%d",bm.getPrice2()));
+//                txtDate.setDate(bm.getDate());
+//                
+//                
+//                
+//            }else
+//            {
+//                MessageDialogHelper.showErrorDialog(parentFrom, "Không tìm thấy hoá đơn nào","Thông báo");
+//            }
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//             MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), "Error");
+//        }
+             
+    }//GEN-LAST:event_btnSearchActionPerformed
+   
 //    ArrayList<RoomModel> arrRoom;
 //    ArrayList<RoomModel> room;
 //    private Connection con;
@@ -160,14 +452,29 @@ public class RoomInfoView extends javax.swing.JPanel {
 //            }
 //        }
 //    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbIDRoom;
+    private javax.swing.JTable TableRoomInfo;
+    private com.k33ptoo.components.KButton btnSearch;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JList<String> jList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel1;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel10;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel11;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel8;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel9;
+    private javax.swing.JLabel lblSumRomm;
+    private javax.swing.JLabel tblSumBedEmpty;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

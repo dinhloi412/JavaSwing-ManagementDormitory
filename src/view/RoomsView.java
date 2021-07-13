@@ -97,7 +97,6 @@ private DefaultTableModel tblModel;
         jLabel5 = new javax.swing.JLabel();
         txtIDroom = new javax.swing.JTextField();
         btnCreateRoom1 = new com.k33ptoo.components.KButton();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(830, 582));
@@ -215,14 +214,6 @@ private DefaultTableModel tblModel;
         });
         jPanel4.add(btnCreateRoom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 161, 107, -1));
 
-        jButton1.setText("uPdate");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -331,39 +322,40 @@ private DefaultTableModel tblModel;
     }//GEN-LAST:event_tblRoomMouseClicked
 
     private void btnCreateRoom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoom1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCreateRoom1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-        
+         StringBuilder sb= new StringBuilder();
+        DataValidator.ValidationEmpty(txtIDroom, sb, "Ten Phong khong duoc de trong");
+        if(sb.length()>0)
+        {
+            MessageDialogHelper.showErrorDialog(parentFrom, sb.toString(), "Lỗi");
+        }
+        if(MessageDialogHelper.showConfirmDialog(parentFrom, "Bạn có muốn xoá phong nay không", "Thông báo quan trọng")==JOptionPane.NO_OPTION){
+             
+            return;
+            
+        }
         try {
-            RoomModel rm= new RoomModel();
-            rm.setIDRooms(Integer.parseInt(txtIDroom.getText()));
-         
-//            sv.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(txtBirthday.getText()));
-            BillDao dao= new BillDao();
-            if(dao.updateCheckRoom(rm))
+           
+            RoomsDao dao= new RoomsDao();
+            if(dao.delete(Integer.parseInt(txtIDroom.getText())))
             {
-                MessageDialogHelper.showMessageDialog(parentFrom, "Sinh viên đã được cập nhật", "Thông báo");
-               
+                MessageDialogHelper.showMessageDialog(parentFrom, "Phong nay da duoc xoa", "Thông báo");
+                LoaddatatoTable();
             }
             else
             {
-                MessageDialogHelper.showConfirmDialog(parentFrom, "Sinh viên chưa được cập nhật", "Cảnh báo");
+                MessageDialogHelper.showConfirmDialog(parentFrom, "Phong nay chua xoa", TOOL_TIP_TEXT_KEY);
             }
             
         } catch (Exception e) {
             e.printStackTrace();
             MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), " Lỗi");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCreateRoom1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnCreateRoom;
     private com.k33ptoo.components.KButton btnCreateRoom1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

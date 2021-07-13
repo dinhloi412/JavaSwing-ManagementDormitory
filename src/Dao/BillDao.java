@@ -50,7 +50,6 @@ public class BillDao {
         try(
             Connection con= DatabaseHelper.openConnection();
             CallableStatement  psmt=con.prepareCall(sql);
-
             )
             
         {

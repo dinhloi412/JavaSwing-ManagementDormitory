@@ -7,6 +7,10 @@ package view;
 
 import helper.ShareData;
 import java.awt.CardLayout;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -28,6 +32,8 @@ private JPanel childPanel;
         LoginDiaLog diaLog= new LoginDiaLog(this,true);
         diaLog.setVisible(true);
         processLogin();
+        setdate();
+        MouseHand();
         
     }
     Student hs;
@@ -55,7 +61,21 @@ private JPanel childPanel;
         }
         jpnLayout.updateUI();
     }
-    
+     public void setdate()
+    {
+        ActionListener actiondate= new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                java.util.Date  mydate= new Date();
+//                lbldateCity.setText(mydate.getDay()+"/"+ mydate.getMonth()+"/"+mydate.getYear());
+                llblTimezone.setText(mydate.getHours()+" : "+ mydate.getMinutes()+" : "+mydate.getSeconds());
+            }
+            
+        };
+        new javax.swing.Timer(1000,actiondate).start();
+    }
      private void loadJPanel(JPanel newPanel) {
         jpnLayout.removeAll();
         jpnLayout.add(newPanel);
@@ -66,6 +86,15 @@ private JPanel childPanel;
        jLabel2.setText(ShareData.nguoidangnhap.getUserName());
        jLabel3.setText(ShareData.nguoidangnhap.getRole());
     }
+    private void MouseHand()
+{
+    kButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton6.setCursor(new Cursor(Cursor.HAND_CURSOR));
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +110,8 @@ private JPanel childPanel;
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        llblTimezone = new javax.swing.JLabel();
+        kButton5 = new com.k33ptoo.components.KButton();
         kButton1 = new com.k33ptoo.components.KButton();
         kButton2 = new com.k33ptoo.components.KButton();
         kButton3 = new com.k33ptoo.components.KButton();
@@ -91,27 +122,84 @@ private JPanel childPanel;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(58, 100, 166));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(58, 100, 166));
         jPanel4.setFocusTraversalPolicyProvider(true);
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_home_50px.png"))); // NOI18N
         jLabel1.setText("Hi Admin");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Admin");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("User");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 11, -1, -1));
+
+        llblTimezone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        llblTimezone.setForeground(new java.awt.Color(255, 255, 255));
+        llblTimezone.setText("Time");
+
+        kButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_home_50px.png"))); // NOI18N
+        kButton5.setkAllowGradient(false);
+        kButton5.setkBackGroundColor(new java.awt.Color(58, 100, 166));
+        kButton5.setkHoverColor(new java.awt.Color(58, 100, 166));
+        kButton5.setkPressedColor(new java.awt.Color(58, 100, 166));
+        kButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kButton5MouseClicked(evt);
+            }
+        });
+        kButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(llblTimezone))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(kButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(llblTimezone)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(kButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addContainerGap())))
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, -1));
 
         kButton1.setBackground(new java.awt.Color(224, 223, 225));
         kButton1.setText("Management Rooms");
@@ -127,6 +215,7 @@ private JPanel childPanel;
                 kButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 281, 244, -1));
 
         kButton2.setText("Management Rooms");
         kButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -141,6 +230,7 @@ private JPanel childPanel;
                 kButton2ActionPerformed(evt);
             }
         });
+        jPanel2.add(kButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 337, 244, -1));
 
         kButton3.setBackground(new java.awt.Color(54, 33, 89));
         kButton3.setText("Management Students");
@@ -156,6 +246,7 @@ private JPanel childPanel;
                 kButton3ActionPerformed(evt);
             }
         });
+        jPanel2.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 216, 244, -1));
 
         kButton4.setText("Management Billing");
         kButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -170,51 +261,16 @@ private JPanel childPanel;
                 kButton4ActionPerformed(evt);
             }
         });
+        jPanel2.add(kButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 393, 244, -1));
 
         kButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_exit_50px.png"))); // NOI18N
         kButton6.setkEndColor(new java.awt.Color(58, 100, 166));
+        kButton6.setkHoverColor(new java.awt.Color(58, 100, 166));
+        kButton6.setkHoverForeGround(new java.awt.Color(58, 100, 166));
+        kButton6.setkHoverStartColor(new java.awt.Color(58, 100, 166));
+        kButton6.setkPressedColor(new java.awt.Color(58, 100, 166));
         kButton6.setkStartColor(new java.awt.Color(58, 100, 166));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
-                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel2.add(kButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 569, 60, 70));
 
         jpnLayout.setBackground(new java.awt.Color(255, 255, 255));
         jpnLayout.setLayout(new javax.swing.BoxLayout(jpnLayout, javax.swing.BoxLayout.LINE_AXIS));
@@ -264,6 +320,14 @@ private JPanel childPanel;
         loadJPanel(new BillView());
     }//GEN-LAST:event_kButton4ActionPerformed
 
+    private void kButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kButton5MouseClicked
+
+    private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
+        loadJPanel(new HomeView());
+    }//GEN-LAST:event_kButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +375,8 @@ private JPanel childPanel;
     private com.k33ptoo.components.KButton kButton2;
     private com.k33ptoo.components.KButton kButton3;
     private com.k33ptoo.components.KButton kButton4;
+    private com.k33ptoo.components.KButton kButton5;
     private com.k33ptoo.components.KButton kButton6;
+    private javax.swing.JLabel llblTimezone;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
  * @author LoiDinh
  */
 public class RoomsDao {
+    
       public boolean insert(RoomModel rm) throws Exception
     {
       
@@ -42,10 +43,10 @@ public class RoomsDao {
         }
         
     }
-    public boolean delete(String IDrooms) throws Exception
+    public boolean delete(int IDrooms) throws Exception
     {
       
-        String sql="delete from Rooms where IDrooms=? ";
+        String sql="delete from Rooms where IDrooms= ? ";
     
         try(
             Connection con= DatabaseHelper.openConnection();
@@ -53,7 +54,7 @@ public class RoomsDao {
 
             ){
             
-            psmt.setString(1,IDrooms);
+            psmt.setInt(1,IDrooms);
             return psmt.executeUpdate()>0; 
         }
         

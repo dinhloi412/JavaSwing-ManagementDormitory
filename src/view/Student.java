@@ -45,10 +45,10 @@ public class Student extends javax.swing.JPanel {
         tblModel= new DefaultTableModel();
         tblModel.setColumnIdentifiers(new String[]{"ID Student","FullName","Email","Phone Number","Sex","Adress","Birthday"});
         tblStudent.setModel(tblModel);
-        tblStudent.getTableHeader().setOpaque(false);
-        tblStudent.getTableHeader().setBackground(new Color(32,136,203));
-        tblStudent.getTableHeader().setForeground(new Color(225,255,255));
-        tblStudent.setRowHeight(25);
+//        tblStudent.getTableHeader().setOpaque(false);
+//        tblStudent.getTableHeader().setBackground(new Color(32,136,203));
+//        tblStudent.getTableHeader().setForeground(new Color(225,255,255));
+//        tblStudent.setRowHeight(25);
     }
     private void LoadDatatoTable()
     {

@@ -441,7 +441,8 @@ private DefaultTableModel tblModel;
 //                i=1;
                 cmbRoom.addItem(rs.getString("IDRooms"));
             }
-            
+            rs.close();
+            con.close();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -513,6 +514,7 @@ private DefaultTableModel tblModel;
             MessageDialogHelper.showErrorDialog(parentFrom, sb.toString(), "Lỗi");
         }
         try {
+            
             BillModel bm= new BillModel();
 //            bm.setIDBill(Integer.parseInt(txtIDStudent.getText()));
             bm.setIDStdudent(Integer.parseInt(txtIDStudent.getText()));
@@ -541,9 +543,21 @@ private DefaultTableModel tblModel;
             }
 //            bm.setCategory(rdParking.getText());
             RoomModel rm= new RoomModel();
+            rm.setIDRooms(Integer.parseInt((String)cmbRoom.getSelectedItem().toString()));
             BillDao dao= new BillDao();
             if(dao.insert(bm))
             {
+                if(ckStatus.isSelected())
+                {
+                    if(dao.updateCheckRoom(rm))
+                    {
+                        
+                    }
+                    else
+                    {
+                         MessageDialogHelper.showMessageDialog(parentFrom, "Sinh viên chưa được thêm vào phòng", "Thông báo");
+                    }
+                }
                 MessageDialogHelper.showMessageDialog(parentFrom, "Hoá đơn đã được lưu", "Thông báo");
                 
             }
