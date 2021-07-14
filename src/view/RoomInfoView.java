@@ -24,7 +24,9 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -33,6 +35,7 @@ import javax.swing.table.DefaultTableModel;
 public class RoomInfoView extends javax.swing.JPanel {
 //    JList LoadJlist= new JList();
      private DefaultTableModel tblModel;
+     private DefaultTableModel tblModel1;
      private Page parentFrom;
     /**
      * Creates new form RoomInfoView
@@ -42,9 +45,14 @@ public class RoomInfoView extends javax.swing.JPanel {
         
         initTable();
         LoadDatatoTable();
-       
-        
-        
+   
+    }
+    public void setRecord()
+    {
+        try {
+            
+        } catch (Exception e) {
+        }
     }
      private  void initTable()
      {
@@ -52,6 +60,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         tblModel.setColumnIdentifiers(new String[]{"IDRooms","Bed","LimitedBed"});
         TableRoomInfo.setModel(tblModel);
      }
+   
     
     private void LoadDatatoTable()
     {
@@ -130,6 +139,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList = new javax.swing.JList<>();
+        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         kButton1 = new com.k33ptoo.components.KButton();
@@ -146,7 +156,6 @@ public class RoomInfoView extends javax.swing.JPanel {
         kGradientPanel11 = new com.k33ptoo.components.KGradientPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
         btnSearch = new com.k33ptoo.components.KButton();
 
         jList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -156,28 +165,36 @@ public class RoomInfoView extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jList);
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,10 +324,6 @@ public class RoomInfoView extends javax.swing.JPanel {
         jLabel7.setText("0");
         kGradientPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 44, 220, -1));
 
-        txtSearch.setText("SEARCH...");
-        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 2));
-        txtSearch.setPreferredSize(new java.awt.Dimension(185, 45));
-
         btnSearch.setkAllowGradient(false);
         btnSearch.setkBackGroundColor(new java.awt.Color(71, 120, 197));
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -326,10 +339,7 @@ public class RoomInfoView extends javax.swing.JPanel {
             .addGroup(kGradientPanel8Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(kGradientPanel8Layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(kGradientPanel8Layout.createSequentialGroup()
                         .addComponent(kGradientPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -342,15 +352,13 @@ public class RoomInfoView extends javax.swing.JPanel {
             kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(kGradientPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kGradientPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(kGradientPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 83, Short.MAX_VALUE))
+                .addGap(0, 52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
@@ -378,7 +386,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -394,15 +402,18 @@ public class RoomInfoView extends javax.swing.JPanel {
         int numrow =TableRoomInfo.getRowCount();
         int tot=0;
         int tot2=0;
+        int tru=0;
         for( int i=0;i< numrow ;i++)
         {
-            int val=Integer.valueOf(TableRoomInfo.getValueAt(i, 1).toString());
+            int val=Integer.valueOf(TableRoomInfo.getValueAt(i, 2).toString());
             tot+=val;
-            int val1=Integer.valueOf(TableRoomInfo.getValueAt(i, 2).toString());
+            int val1=Integer.valueOf(TableRoomInfo.getValueAt(i, 1).toString());
              tot2+=val1;
+              tru= tot-tot2;
         }
         lblSumRomm.setText(Integer.toString(tot));
-        tblSumBedEmpty.setText(Integer.toString(tot2));
+        jLabel7.setText(Integer.toString(tot2));
+        tblSumBedEmpty.setText(Integer.toString(tru));
  
     }//GEN-LAST:event_kButton1ActionPerformed
 
@@ -431,7 +442,7 @@ public class RoomInfoView extends javax.swing.JPanel {
 //            e.printStackTrace();
 //             MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), "Error");
 //        }
-             
+            
     }//GEN-LAST:event_btnSearchActionPerformed
    
 //    ArrayList<RoomModel> arrRoom;
@@ -467,6 +478,7 @@ public class RoomInfoView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel10;
@@ -475,6 +487,5 @@ public class RoomInfoView extends javax.swing.JPanel {
     private com.k33ptoo.components.KGradientPanel kGradientPanel9;
     private javax.swing.JLabel lblSumRomm;
     private javax.swing.JLabel tblSumBedEmpty;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

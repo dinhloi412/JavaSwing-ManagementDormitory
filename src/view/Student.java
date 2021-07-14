@@ -111,39 +111,50 @@ public class Student extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(830, 582));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("ID Student");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 136, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Full Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 214, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Email");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 285, -1, -1));
 
         txtIDStudent.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtIDStudent.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
         txtIDStudent.setCaretColor(new java.awt.Color(255, 0, 255));
         txtIDStudent.setOpaque(false);
+        add(txtIDStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 162, 130, 30));
 
         txtFullName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtFullName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
         txtFullName.setOpaque(false);
+        add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 237, 130, 30));
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 309, 130, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Phone Number");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 136, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Sex: ");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 206, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Address");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 237, -1, -1));
 
         txtPhone.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtPhone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
+        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 162, 184, 30));
 
         tblStudent.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tblStudent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -171,6 +182,8 @@ public class Student extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblStudent);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 408, 810, 164));
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnBrowser.setBackground(new java.awt.Color(153, 194, 255));
@@ -183,7 +196,7 @@ public class Student extends javax.swing.JPanel {
 
         lblImage.setBackground(new java.awt.Color(153, 194, 255));
         lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_save_30px_1.png"))); // NOI18N
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_student_male_100px.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,19 +217,25 @@ public class Student extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 136, -1, -1));
+
         txaAddress.setColumns(20);
         txaAddress.setRows(5);
         jScrollPane2.setViewportView(txaAddress);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 268, 184, 70));
 
         rdmale.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rdmale);
         rdmale.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         rdmale.setText("Male");
+        add(rdmale, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 205, -1, -1));
 
         rdFamale.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rdFamale);
         rdFamale.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         rdFamale.setText("Female");
+        add(rdFamale, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 205, -1, -1));
 
         btnNew.setText("NEW");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +243,7 @@ public class Student extends javax.swing.JPanel {
                 btnNewActionPerformed(evt);
             }
         });
+        add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 359, -1, -1));
 
         btnSave.setText("SAVE");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +251,7 @@ public class Student extends javax.swing.JPanel {
                 btnSaveActionPerformed(evt);
             }
         });
+        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 359, -1, -1));
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +259,7 @@ public class Student extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 359, -1, -1));
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -245,9 +267,12 @@ public class Student extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 359, -1, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 388, 810, 10));
 
         txtBirthday.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtBirthday.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
+        add(txtBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 114, -1));
 
         jPanel3.setBackground(new java.awt.Color(71, 120, 197));
 
@@ -262,7 +287,7 @@ public class Student extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(572, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,104 +297,7 @@ public class Student extends javax.swing.JPanel {
                 .addGap(32, 32, 32))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(txtIDStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(17, 17, 17)
-                                .addComponent(rdmale)
-                                .addGap(24, 24, 24)
-                                .addComponent(rdFamale))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBirthday))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(btnNew)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSave)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtIDStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)
-                        .addGap(3, 3, 3)
-                        .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel5))
-                            .addComponent(rdmale)
-                            .addComponent(rdFamale))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNew)
-                    .addComponent(btnSave)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
-                .addGap(6, 6, 6)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed

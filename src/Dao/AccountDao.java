@@ -6,10 +6,13 @@
 package Dao;
 
 import Model.AccountModel;
+import Model.StudentModel;
 import helper.DatabaseHelper;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.sql.rowset.serial.SerialBlob;
 import view.Student;
 /**
  *
@@ -43,5 +46,26 @@ public class AccountDao {
             }
         }
         return null;
+    }
+     public boolean insert(AccountModel am) throws Exception
+    {
+     
+        String sql="insert into dbo.Account (UserName,PassWord,Role)" + "values(?,?,?)";
+    
+        try(
+            Connection con= DatabaseHelper.openConnection();
+            PreparedStatement psmt=con.prepareStatement(sql);
+
+            )
+        {
+            psmt.setString(1, am.getUserName());
+            psmt.setString(2, am.getPassword());
+            psmt.setString(3, am.getRole());
+           
+
+           
+            return psmt.executeUpdate()>0; 
+        }
+        
     }
 }

@@ -28,13 +28,20 @@ private JPanel childPanel;
         initComponents();
         setLocationRelativeTo(null);
 //        setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
+         this.openWelcome();
         setResizable(false);
         LoginDiaLog diaLog= new LoginDiaLog(this,true);
         diaLog.setVisible(true);
         processLogin();
         setdate();
         MouseHand();
+       setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    
         
+
+    }
+    void openWelcome() {
+        new ProcessBar(this, true).setVisible(true);
     }
     Student hs;
     public void reloadPanel(int i){
@@ -94,6 +101,7 @@ private JPanel childPanel;
     kButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
     kButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
     kButton6.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,6 +125,7 @@ private JPanel childPanel;
         kButton3 = new com.k33ptoo.components.KButton();
         kButton4 = new com.k33ptoo.components.KButton();
         kButton6 = new com.k33ptoo.components.KButton();
+        kButton7 = new com.k33ptoo.components.KButton();
         jpnLayout = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -202,7 +211,7 @@ private JPanel childPanel;
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, -1));
 
         kButton1.setBackground(new java.awt.Color(224, 223, 225));
-        kButton1.setText("Management Rooms");
+        kButton1.setText("ROOMS");
         kButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton1.setkAllowGradient(false);
         kButton1.setkAllowTab(true);
@@ -217,7 +226,7 @@ private JPanel childPanel;
         });
         jPanel2.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 281, 244, -1));
 
-        kButton2.setText("Management Rooms");
+        kButton2.setText("STATISTICAL");
         kButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton2.setkAllowGradient(false);
         kButton2.setkAllowTab(true);
@@ -233,7 +242,7 @@ private JPanel childPanel;
         jPanel2.add(kButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 337, 244, -1));
 
         kButton3.setBackground(new java.awt.Color(54, 33, 89));
-        kButton3.setText("Management Students");
+        kButton3.setText("STUDENT");
         kButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton3.setkAllowGradient(false);
         kButton3.setkAllowTab(true);
@@ -248,7 +257,7 @@ private JPanel childPanel;
         });
         jPanel2.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 216, 244, -1));
 
-        kButton4.setText("Management Billing");
+        kButton4.setText("BILLS");
         kButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton4.setkAllowGradient(false);
         kButton4.setkAllowTab(true);
@@ -266,11 +275,34 @@ private JPanel childPanel;
         kButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_exit_50px.png"))); // NOI18N
         kButton6.setkEndColor(new java.awt.Color(58, 100, 166));
         kButton6.setkHoverColor(new java.awt.Color(58, 100, 166));
+        kButton6.setkHoverEndColor(new java.awt.Color(58, 100, 166));
         kButton6.setkHoverForeGround(new java.awt.Color(58, 100, 166));
         kButton6.setkHoverStartColor(new java.awt.Color(58, 100, 166));
         kButton6.setkPressedColor(new java.awt.Color(58, 100, 166));
         kButton6.setkStartColor(new java.awt.Color(58, 100, 166));
-        jPanel2.add(kButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 569, 60, 70));
+        kButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton6ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(kButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 60, 70));
+
+        kButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_male_user_48px.png"))); // NOI18N
+        kButton7.setkAllowGradient(false);
+        kButton7.setkBackGroundColor(new java.awt.Color(58, 100, 166));
+        kButton7.setkEndColor(new java.awt.Color(58, 100, 166));
+        kButton7.setkForeGround(new java.awt.Color(58, 100, 166));
+        kButton7.setkHoverColor(new java.awt.Color(58, 100, 166));
+        kButton7.setkHoverEndColor(new java.awt.Color(58, 100, 166));
+        kButton7.setkHoverForeGround(new java.awt.Color(58, 100, 166));
+        kButton7.setkHoverStartColor(new java.awt.Color(58, 100, 166));
+        kButton7.setkPressedColor(new java.awt.Color(58, 100, 166));
+        kButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton7ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(kButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 60, 70));
 
         jpnLayout.setBackground(new java.awt.Color(255, 255, 255));
         jpnLayout.setLayout(new javax.swing.BoxLayout(jpnLayout, javax.swing.BoxLayout.LINE_AXIS));
@@ -328,6 +360,18 @@ private JPanel childPanel;
         loadJPanel(new HomeView());
     }//GEN-LAST:event_kButton5ActionPerformed
 
+    private void kButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton6ActionPerformed
+        LoginDiaLog diaLog= new LoginDiaLog(this,true);
+        
+        diaLog.setVisible(true);
+    }//GEN-LAST:event_kButton6ActionPerformed
+
+    private void kButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton7ActionPerformed
+       RegisterDialog lg= new RegisterDialog(this,true);
+       
+       lg.setVisible(true);
+    }//GEN-LAST:event_kButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -377,6 +421,7 @@ private JPanel childPanel;
     private com.k33ptoo.components.KButton kButton4;
     private com.k33ptoo.components.KButton kButton5;
     private com.k33ptoo.components.KButton kButton6;
+    private com.k33ptoo.components.KButton kButton7;
     private javax.swing.JLabel llblTimezone;
     // End of variables declaration//GEN-END:variables
 }

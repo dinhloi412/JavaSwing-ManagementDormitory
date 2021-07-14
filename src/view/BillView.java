@@ -16,15 +16,28 @@ import helper.DatabaseHelper;
 import helper.ImgaeHelper;
 import helper.MessageDialogHelper;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Image;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import static javax.swing.JComponent.TOOL_TIP_TEXT_KEY;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -375,6 +388,11 @@ private DefaultTableModel tblModel;
         kButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
         kButton15.setkAllowGradient(false);
         kButton15.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        kButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton15ActionPerformed(evt);
+            }
+        });
         jPanel1.add(kButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 381, 68, 71));
 
         TableBillInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
@@ -693,6 +711,10 @@ private DefaultTableModel tblModel;
                                          
 
     }//GEN-LAST:event_tableBillMouseClicked
+   
+    private void kButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton15ActionPerformed
+        
+    }//GEN-LAST:event_kButton15ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton BtnDelete;
@@ -724,7 +746,7 @@ private DefaultTableModel tblModel;
     private com.k33ptoo.components.KButton kButton9;
     private javax.swing.JCheckBox rdParking;
     private javax.swing.JCheckBox rdWash;
-    private javax.swing.JTable tableBill;
+    public javax.swing.JTable tableBill;
     private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtFindByIDBill;
     private javax.swing.JTextField txtFullName;
