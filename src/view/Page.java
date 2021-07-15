@@ -92,6 +92,11 @@ private JPanel childPanel;
     {
        jLabel2.setText(ShareData.nguoidangnhap.getUserName());
        jLabel3.setText(ShareData.nguoidangnhap.getRole());
+       
+       if(ShareData.nguoidangnhap.getRole().equals("Staff"))
+       {
+           kButton7.setEnabled(false);
+       }
     }
     private void MouseHand()
 {
@@ -126,6 +131,7 @@ private JPanel childPanel;
         kButton4 = new com.k33ptoo.components.KButton();
         kButton6 = new com.k33ptoo.components.KButton();
         kButton7 = new com.k33ptoo.components.KButton();
+        kButton8 = new com.k33ptoo.components.KButton();
         jpnLayout = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -211,7 +217,7 @@ private JPanel childPanel;
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, -1));
 
         kButton1.setBackground(new java.awt.Color(224, 223, 225));
-        kButton1.setText("ROOMS");
+        kButton1.setText("STATISTICAL");
         kButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton1.setkAllowGradient(false);
         kButton1.setkAllowTab(true);
@@ -226,7 +232,7 @@ private JPanel childPanel;
         });
         jPanel2.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 281, 244, -1));
 
-        kButton2.setText("STATISTICAL");
+        kButton2.setText("STUDENT");
         kButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton2.setkAllowGradient(false);
         kButton2.setkAllowTab(true);
@@ -242,7 +248,7 @@ private JPanel childPanel;
         jPanel2.add(kButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 337, 244, -1));
 
         kButton3.setBackground(new java.awt.Color(54, 33, 89));
-        kButton3.setText("STUDENT");
+        kButton3.setText("ROOMS");
         kButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton3.setkAllowGradient(false);
         kButton3.setkAllowTab(true);
@@ -257,7 +263,7 @@ private JPanel childPanel;
         });
         jPanel2.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 216, 244, -1));
 
-        kButton4.setText("BILLS");
+        kButton4.setText("THỐNG KÊ");
         kButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton4.setkAllowGradient(false);
         kButton4.setkAllowTab(true);
@@ -270,7 +276,7 @@ private JPanel childPanel;
                 kButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(kButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 393, 244, -1));
+        jPanel2.add(kButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 244, -1));
 
         kButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_exit_50px.png"))); // NOI18N
         kButton6.setkEndColor(new java.awt.Color(58, 100, 166));
@@ -303,6 +309,21 @@ private JPanel childPanel;
             }
         });
         jPanel2.add(kButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 60, 70));
+
+        kButton8.setText("BILLS");
+        kButton8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        kButton8.setkAllowGradient(false);
+        kButton8.setkAllowTab(true);
+        kButton8.setkBackGroundColor(new java.awt.Color(51, 78, 108));
+        kButton8.setkEndColor(new java.awt.Color(255, 204, 204));
+        kButton8.setkHoverColor(new java.awt.Color(27, 44, 63));
+        kButton8.setkSelectedColor(new java.awt.Color(102, 102, 255));
+        kButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton8ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(kButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 393, 244, -1));
 
         jpnLayout.setBackground(new java.awt.Color(255, 255, 255));
         jpnLayout.setLayout(new javax.swing.BoxLayout(jpnLayout, javax.swing.BoxLayout.LINE_AXIS));
@@ -349,7 +370,7 @@ private JPanel childPanel;
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
-        loadJPanel(new BillView());
+        loadJPanel(new StatisticalView());
     }//GEN-LAST:event_kButton4ActionPerformed
 
     private void kButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton5MouseClicked
@@ -371,6 +392,10 @@ private JPanel childPanel;
        
        lg.setVisible(true);
     }//GEN-LAST:event_kButton7ActionPerformed
+
+    private void kButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton8ActionPerformed
+        loadJPanel(new BillView());
+    }//GEN-LAST:event_kButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,6 +447,7 @@ private JPanel childPanel;
     private com.k33ptoo.components.KButton kButton5;
     private com.k33ptoo.components.KButton kButton6;
     private com.k33ptoo.components.KButton kButton7;
+    private com.k33ptoo.components.KButton kButton8;
     private javax.swing.JLabel llblTimezone;
     // End of variables declaration//GEN-END:variables
 }

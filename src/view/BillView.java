@@ -16,6 +16,7 @@ import helper.DatabaseHelper;
 import helper.ImgaeHelper;
 import helper.MessageDialogHelper;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.io.BufferedOutputStream;
@@ -54,6 +55,7 @@ private DefaultTableModel tblModel;
         loadCMB();
         initTable();
         LoadDatatoTable();
+        MouseHand();
     }
     
     /**
@@ -96,12 +98,10 @@ private DefaultTableModel tblModel;
         kButton11 = new com.k33ptoo.components.KButton();
         BtnDelete = new com.k33ptoo.components.KButton();
         btnUpdate = new com.k33ptoo.components.KButton();
-        kButton13 = new com.k33ptoo.components.KButton();
+        TableBillInfo = new com.k33ptoo.components.KButton();
         jLabel2 = new javax.swing.JLabel();
         txtFindByIDBill = new javax.swing.JTextField();
         kButton9 = new com.k33ptoo.components.KButton();
-        kButton15 = new com.k33ptoo.components.KButton();
-        TableBillInfo = new com.k33ptoo.components.KButton();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(683, 424));
 
@@ -141,7 +141,7 @@ private DefaultTableModel tblModel;
                 .addContainerGap())
         );
 
-        setBackground(new java.awt.Color(243, 243, 243));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(71, 120, 197));
@@ -154,7 +154,7 @@ private DefaultTableModel tblModel;
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 86));
 
-        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -320,7 +320,6 @@ private DefaultTableModel tblModel;
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 120, 197), 3));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         kButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_save_45px.png"))); // NOI18N
         kButton11.setkAllowGradient(false);
@@ -330,7 +329,6 @@ private DefaultTableModel tblModel;
                 kButton11ActionPerformed(evt);
             }
         });
-        jPanel5.add(kButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 3, 68, 71));
 
         BtnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
         BtnDelete.setkAllowGradient(false);
@@ -340,9 +338,8 @@ private DefaultTableModel tblModel;
                 BtnDeleteActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 3, 68, 71));
 
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_update_left_rotation_48px.png"))); // NOI18N
         btnUpdate.setkAllowGradient(false);
         btnUpdate.setkBackGroundColor(new java.awt.Color(255, 255, 255));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -350,52 +347,8 @@ private DefaultTableModel tblModel;
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel5.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 3, 68, 71));
 
-        kButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
-        kButton13.setkAllowGradient(false);
-        kButton13.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton13ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(kButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 3, 68, 71));
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 370, 80));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("ID Bill: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
-
-        txtFindByIDBill.setBackground(new java.awt.Color(243, 243, 243));
-        txtFindByIDBill.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
-        txtFindByIDBill.setOpaque(false);
-        jPanel1.add(txtFindByIDBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 70, 30));
-
-        kButton9.setBackground(new java.awt.Color(243, 243, 243));
-        kButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_search_contacts_20px.png"))); // NOI18N
-        kButton9.setkAllowGradient(false);
-        kButton9.setkBackGroundColor(new java.awt.Color(243, 243, 243));
-        kButton9.setkForeGround(new java.awt.Color(243, 243, 243));
-        kButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(kButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 40, -1));
-
-        kButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
-        kButton15.setkAllowGradient(false);
-        kButton15.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton15ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(kButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 381, 68, 71));
-
-        TableBillInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_delete_trash_45px.png"))); // NOI18N
+        TableBillInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_list_50px.png"))); // NOI18N
         TableBillInfo.setkAllowGradient(false);
         TableBillInfo.setkBackGroundColor(new java.awt.Color(255, 255, 255));
         TableBillInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -403,7 +356,56 @@ private DefaultTableModel tblModel;
                 TableBillInfoActionPerformed(evt);
             }
         });
-        jPanel1.add(TableBillInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 381, 68, 71));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(kButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TableBillInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TableBillInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 370, 80));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("ID Bill: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
+
+        txtFindByIDBill.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(71, 120, 197)));
+        txtFindByIDBill.setOpaque(false);
+        jPanel1.add(txtFindByIDBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 70, 30));
+
+        kButton9.setBackground(new java.awt.Color(243, 243, 243));
+        kButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagev2/icons8_search_contacts_20px.png"))); // NOI18N
+        kButton9.setkAllowGradient(false);
+        kButton9.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        kButton9.setkPressedColor(new java.awt.Color(255, 255, 255));
+        kButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(kButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 40, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 830, 460));
     }// </editor-fold>//GEN-END:initComponents
@@ -418,6 +420,13 @@ private DefaultTableModel tblModel;
         rdParking.setSelected(false);
         rdWash.setSelected(false);
         txtPrice2.setText("");
+    }
+     private void MouseHand()
+    {
+    kButton11.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    kButton9.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    BtnDelete.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    btnUpdate.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
      private  void initTable()
     {
@@ -501,14 +510,12 @@ private DefaultTableModel tblModel;
             {
                 txtIDStudent.setText(String.format("%d", bm.getIDStdudent()));
                 txtFullName.setText(bm.getFullName());
-                cmbRoom.setSelectedItem(bm.getIDRooms());
-//                cmbMonth.setSelectedItem(bm.getMonth());
+                cmbRoom.setSelectedIndex(bm.getIDRooms());
+                cmbMonth.setSelectedIndex(bm.getMonth());
                 txtPrice1.setText(String.format("%d",bm.getPrice1()));
                 txtPrice2.setText(String.format("%d",bm.getPrice2()));
-                txtDate.setDate(bm.getDate());
-                
-                
-                
+                txtDate.setDate(bm.getDate()); 
+//                ckStatus.setSelected(bm.getStatus());
             }else
             {
                 MessageDialogHelper.showErrorDialog(parentFrom, "Không tìm thấy hoá đơn nào","Thông báo");
@@ -696,11 +703,6 @@ private DefaultTableModel tblModel;
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void kButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton13ActionPerformed
-        LoadEmpty();
-        
-    }//GEN-LAST:event_kButton13ActionPerformed
-
     private void TableBillInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TableBillInfoActionPerformed
         jDialog1.setVisible(true);
         jDialog1.setLocationRelativeTo(null);
@@ -712,10 +714,6 @@ private DefaultTableModel tblModel;
 
     }//GEN-LAST:event_tableBillMouseClicked
    
-    private void kButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton15ActionPerformed
-        
-    }//GEN-LAST:event_kButton15ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton BtnDelete;
     private com.k33ptoo.components.KButton TableBillInfo;
@@ -741,8 +739,6 @@ private DefaultTableModel tblModel;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private com.k33ptoo.components.KButton kButton11;
-    private com.k33ptoo.components.KButton kButton13;
-    private com.k33ptoo.components.KButton kButton15;
     private com.k33ptoo.components.KButton kButton9;
     private javax.swing.JCheckBox rdParking;
     private javax.swing.JCheckBox rdWash;

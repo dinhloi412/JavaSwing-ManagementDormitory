@@ -141,9 +141,10 @@ public class BillDao {
                 if(rs.next())
                 {
                     BillModel bm= new BillModel();
+                    bm.setIDBill(rs.getInt("IDBill"));
                     bm.setIDStdudent(rs.getInt("IDStdudent"));
+                    bm.setIDRooms(rs.getInt("IDRooms"));
                     bm.setFullName(rs.getString("FullName"));
-                    bm.setIDStdudent(rs.getInt("IDRooms"));
                     bm.setIDRooms(rs.getInt("Month"));
                     bm.setPrice1(rs.getInt("Price1"));
                     bm.setCategory(rs.getString("Category"));
