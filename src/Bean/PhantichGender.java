@@ -12,6 +12,22 @@ package Bean;
 public class PhantichGender {
     private int Gender;
     private int soluongnamnu;
+
+    public int getGender() {
+        return Gender;
+    }
+
+    public void setGender(int Gender) {
+        this.Gender = Gender;
+    }
+
+    public int getSoluongnamnu() {
+        return soluongnamnu;
+    }
+
+    public void setSoluongnamnu(int soluongnamnu) {
+        this.soluongnamnu = soluongnamnu;
+    }
     
     
 }

@@ -19,6 +19,8 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Image;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -70,8 +72,13 @@ private DefaultTableModel tblModel;
         jDialog1 = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableBill = new javax.swing.JTable();
+        jDialog2 = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        kButton3 = new com.k33ptoo.components.KButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        kButton1 = new com.k33ptoo.components.KButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -141,6 +148,52 @@ private DefaultTableModel tblModel;
                 .addContainerGap())
         );
 
+        jDialog2.setBackground(new java.awt.Color(255, 255, 255));
+        jDialog2.setMaximumSize(new java.awt.Dimension(346, 520));
+        jDialog2.setMinimumSize(new java.awt.Dimension(346, 520));
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
+
+        kButton3.setBackground(new java.awt.Color(54, 33, 89));
+        kButton3.setText("PRINT");
+        kButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        kButton3.setkAllowGradient(false);
+        kButton3.setkAllowTab(true);
+        kButton3.setkBackGroundColor(new java.awt.Color(51, 78, 108));
+        kButton3.setkEndColor(new java.awt.Color(255, 204, 204));
+        kButton3.setkHoverColor(new java.awt.Color(27, 44, 63));
+        kButton3.setkSelectedColor(new java.awt.Color(102, 102, 255));
+        kButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                    .addComponent(kButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -151,6 +204,14 @@ private DefaultTableModel tblModel;
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Biiling");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 22, -1, -1));
+
+        kButton1.setText("PRINT");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 86));
 
@@ -239,6 +300,11 @@ private DefaultTableModel tblModel;
         txtTotalPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTotalPrice.setText("0đ");
         txtTotalPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(71, 120, 197)));
+        txtTotalPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalPriceActionPerformed(evt);
+            }
+        });
 
         txtDate.setBackground(new java.awt.Color(255, 255, 255));
         txtDate.setOpaque(false);
@@ -510,12 +576,13 @@ private DefaultTableModel tblModel;
             {
                 txtIDStudent.setText(String.format("%d", bm.getIDStdudent()));
                 txtFullName.setText(bm.getFullName());
-                cmbRoom.setSelectedIndex(bm.getIDRooms());
-                cmbMonth.setSelectedIndex(bm.getMonth());
+                cmbRoom.setSelectedItem(bm.getIDRooms());
+                cmbMonth.setSelectedItem(bm.getMonth());
                 txtPrice1.setText(String.format("%d",bm.getPrice1()));
                 txtPrice2.setText(String.format("%d",bm.getPrice2()));
                 txtDate.setDate(bm.getDate()); 
-//                ckStatus.setSelected(bm.getStatus());
+                ckStatus.setSelected(true);
+                
             }else
             {
                 MessageDialogHelper.showErrorDialog(parentFrom, "Không tìm thấy hoá đơn nào","Thông báo");
@@ -626,12 +693,23 @@ private DefaultTableModel tblModel;
             
         }
         try {
-           
+           RoomModel rm= new RoomModel();
             BillDao dao= new BillDao();
+            rm.setIDRooms(Integer.parseInt((String)cmbRoom.getSelectedItem().toString()));
             if(dao.delete(Integer.parseInt(txtFindByIDBill.getText())))
             {
+//                if(ckStatus.isSelected())
+//                {
+//                    if(dao.updateCheckRoom1(rm))
+//                    {
+//                        
+//                    }
+//                    else
+//                    {
+//                         MessageDialogHelper.showMessageDialog(parentFrom, "Phòng chưa được cập nhật", "Thông báo");
+//                    }
+//                }
                 MessageDialogHelper.showMessageDialog(parentFrom, "Hoá đơn đã được xoá", "Thông báo");
-                
             }
             else
             {
@@ -713,6 +791,73 @@ private DefaultTableModel tblModel;
                                          
 
     }//GEN-LAST:event_tableBillMouseClicked
+    private void bill()
+    {
+         double cate=0;
+        int idsv= Integer.parseInt(txtIDStudent.getText());
+        String name= txtFullName.getText();
+        String room=cmbRoom.getSelectedItem().toString();
+        String month= cmbMonth.getSelectedItem().toString();
+        float total= Float.parseFloat(txtTotalPrice.getText());
+        if(rdParking.isSelected())
+        {
+             cate=200;
+        }
+        else if(rdWash.isSelected())
+        {
+             cate=100;
+        }
+        else if(rdParking.isSelected() && rdWash.isSelected())
+        {
+             cate=300;
+        }
+        String Category=String.format(jLabel8.getText());
+        String Total= String.format(txtTotalPrice.getText());
+        jTextArea2.setText(                                                            
+                "----------------------------------------------------------------------\n"+
+                "\n                           Đại học Văn Lang                          \n" +
+                "\n                            SĐT:0123456789                       \n"+          
+                "\n                         Địa chỉ: Cơ sở 3 TPHCM                    \n"  +
+                "----------------------------------------------------------------------\n"+    
+                 "\n                          BIÊN LAI THU TIỀN                        \n"+
+                        
+                "\n       Mã số Sinh viên:              "+idsv+
+                "\n"+         
+                "\n       Họ tên sinh viên:             "+name+
+                "\n"+          
+                "\n       Mã phòng:                       "+room+
+                "\n"+          
+                "\n       Tháng:                            "+month+
+                "\n"+         
+                "\n       Dịch vụ:                          "+cate+ 
+                "\n"+         
+                "\n       Tổng tiền:                       "+total   
+                           
+        );
+    }
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        jDialog2.setVisible(true);
+        jDialog2.setLocationRelativeTo(null);
+        bill();
+        
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void txtTotalPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPriceActionPerformed
+
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+        String printdata=   jTextArea2.getText();
+        PrinterJob job=PrinterJob.getPrinterJob();
+        boolean doprint= job.printDialog();
+        if(doprint)
+        {
+            try {
+                job.print();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_kButton3ActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton BtnDelete;
@@ -722,6 +867,7 @@ private DefaultTableModel tblModel;
     private javax.swing.JComboBox<String> cmbMonth;
     private javax.swing.JComboBox<String> cmbRoom;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -738,7 +884,11 @@ private DefaultTableModel tblModel;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea2;
+    private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KButton kButton11;
+    private com.k33ptoo.components.KButton kButton3;
     private com.k33ptoo.components.KButton kButton9;
     private javax.swing.JCheckBox rdParking;
     private javax.swing.JCheckBox rdWash;

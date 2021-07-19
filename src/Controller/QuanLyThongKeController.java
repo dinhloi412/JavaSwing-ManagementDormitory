@@ -42,7 +42,7 @@ public class QuanLyThongKeController {
               {
              dataset.addValue(item.getSoluongdangky(), "Bill", item.getNgaydangky());
               }
-              JFreeChart chart= ChartFactory.createBarChart("Thong Ke Bill", "Thời gian", "Số Lượng", dataset,PlotOrientation.VERTICAL, false, true, false);
+              JFreeChart chart= ChartFactory.createBarChart("Thống kê hoá đơn theo ngày", "Thời gian", "Số Lượng", dataset,PlotOrientation.VERTICAL, false, true, false);
               
               ChartPanel chartpanel= new ChartPanel(chart);
               chartpanel.setPreferredSize(new Dimension(jpnItem.getWidth(),300));

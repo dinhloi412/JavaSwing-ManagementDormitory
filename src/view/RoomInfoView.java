@@ -22,6 +22,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.RowFilter;
@@ -37,6 +39,7 @@ public class RoomInfoView extends javax.swing.JPanel {
      private DefaultTableModel tblModel;
      private DefaultTableModel tblModel1;
      private Page parentFrom;
+     String[] columname={"Ma so Sinh vien","Ten Sinh vien"};
     /**
      * Creates new form RoomInfoView
      */
@@ -45,6 +48,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         
         initTable();
         LoadDatatoTable();
+        menu.add(jPanel3);
    
     }
     public void setRecord()
@@ -140,6 +144,10 @@ public class RoomInfoView extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList = new javax.swing.JList<>();
         jTextField1 = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1111 = new javax.swing.JTable();
+        menu = new javax.swing.JPopupMenu();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         kButton1 = new com.k33ptoo.components.KButton();
@@ -157,6 +165,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnSearch = new com.k33ptoo.components.KButton();
+        jTextField2 = new javax.swing.JTextField();
 
         jList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { " " };
@@ -201,6 +210,29 @@ public class RoomInfoView extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jTable1111.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1111);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
+        );
+
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(71, 120, 197));
@@ -212,7 +244,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         jLabel1.setText("Room Info");
 
         kButton1.setForeground(new java.awt.Color(71, 120, 197));
-        kButton1.setText("CẬP NHẬT DỮ LIỆU");
+        kButton1.setText("UPDATE DATABASE");
         kButton1.setkAllowGradient(false);
         kButton1.setkBackGroundColor(new java.awt.Color(255, 255, 255));
         kButton1.setkForeGround(new java.awt.Color(71, 120, 197));
@@ -324,6 +356,7 @@ public class RoomInfoView extends javax.swing.JPanel {
         jLabel7.setText("0");
         kGradientPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 44, 220, -1));
 
+        btnSearch.setText("Search");
         btnSearch.setkAllowGradient(false);
         btnSearch.setkBackGroundColor(new java.awt.Color(71, 120, 197));
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -332,15 +365,25 @@ public class RoomInfoView extends javax.swing.JPanel {
             }
         });
 
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel8Layout = new javax.swing.GroupLayout(kGradientPanel8);
         kGradientPanel8.setLayout(kGradientPanel8Layout);
         kGradientPanel8Layout.setHorizontalGroup(
             kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel8Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel8Layout.createSequentialGroup()
+                        .addGap(550, 550, 550)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel8Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
                         .addComponent(kGradientPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(kGradientPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,7 +395,9 @@ public class RoomInfoView extends javax.swing.JPanel {
             kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(kGradientPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -444,6 +489,35 @@ public class RoomInfoView extends javax.swing.JPanel {
 //        }
             
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        if(jTextField2.getText().trim().equals(""))
+        {
+           
+            try {
+                Statement stmt= null;
+                
+                 Connection con= DatabaseHelper.openConnection();
+                String sql="select IDStdudent, FullName, IDRooms from dbo.Bill  where FullName like '"+jTextField2.getText().trim()+"%' ORDER BY FullName";
+                stmt=con.createStatement();
+                ResultSet rs= stmt.executeQuery(sql);
+                menu.show(jTextField2,0,jTextField2.getHeight());
+                
+                DefaultTableModel model= new DefaultTableModel();
+                model.setColumnIdentifiers(columname);
+                jTable1111.setModel(model);
+                while(rs.next())
+                {
+                    System.out.println(rs.getString(1));
+                   
+                }
+                 rs.close();
+                 con.close();
+            } catch (Exception ex) {
+               
+            }
+        }
+    }//GEN-LAST:event_jTextField2KeyReleased
    
 //    ArrayList<RoomModel> arrRoom;
 //    ArrayList<RoomModel> room;
@@ -476,9 +550,13 @@ public class RoomInfoView extends javax.swing.JPanel {
     private javax.swing.JList<String> jList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1111;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel10;
@@ -486,6 +564,7 @@ public class RoomInfoView extends javax.swing.JPanel {
     private com.k33ptoo.components.KGradientPanel kGradientPanel8;
     private com.k33ptoo.components.KGradientPanel kGradientPanel9;
     private javax.swing.JLabel lblSumRomm;
+    private javax.swing.JPopupMenu menu;
     private javax.swing.JLabel tblSumBedEmpty;
     // End of variables declaration//GEN-END:variables
 }

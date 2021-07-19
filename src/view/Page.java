@@ -217,7 +217,7 @@ private JPanel childPanel;
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, -1));
 
         kButton1.setBackground(new java.awt.Color(224, 223, 225));
-        kButton1.setText("STATISTICAL");
+        kButton1.setText("ROOM_INFO");
         kButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton1.setkAllowGradient(false);
         kButton1.setkAllowTab(true);
@@ -232,7 +232,7 @@ private JPanel childPanel;
         });
         jPanel2.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 281, 244, -1));
 
-        kButton2.setText("STUDENT");
+        kButton2.setText("STUDENTS");
         kButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton2.setkAllowGradient(false);
         kButton2.setkAllowTab(true);
@@ -263,7 +263,7 @@ private JPanel childPanel;
         });
         jPanel2.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 216, 244, -1));
 
-        kButton4.setText("THỐNG KÊ");
+        kButton4.setText("STATISTICAL");
         kButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kButton4.setkAllowGradient(false);
         kButton4.setkAllowTab(true);

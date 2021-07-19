@@ -6,6 +6,7 @@
 package Service;
 
 import Bean.Phantich;
+import Bean.PhantichGender;
 import Dao.ThongkeDao;
 import Dao.ThongkeDaoImpl;
 import java.util.List;
@@ -27,6 +28,11 @@ public class ThongKeServiecImp implements ThongKeService{
     @Override
     public List<Phantich> getlistBy() {
         return thongkedao.getlistBy();
+    }
+
+    @Override
+    public List<PhantichGender> getlistByGender() {
+        return thongkedao.getlistByGender();
     }
     
 }

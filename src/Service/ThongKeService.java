@@ -6,6 +6,7 @@
 package Service;
 
 import Bean.Phantich;
+import Bean.PhantichGender;
 import java.util.List;
 
 /**
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface ThongKeService {
     public List<Phantich> getlistBy();
+    public List<PhantichGender> getlistByGender();
 }

@@ -6,6 +6,7 @@
 package Dao;
 import java.sql.PreparedStatement;
 import Bean.Phantich;
+import Bean.PhantichGender;
 import helper.DatabaseHelper;
 import java.util.List;
 import java.sql.Connection;
@@ -34,6 +35,32 @@ public class ThongkeDaoImpl implements ThongkeDao{
                 phantich.setNgaydangky(rs.getString("Date"));
                 phantich.setSoluongdangky(rs.getInt("soluongdangky"));
                 list.add(phantich);
+            }
+            ps.close();
+            con.close();
+            return list;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(ThongkeDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return null;    
+    }
+
+    @Override
+    public List<PhantichGender> getlistByGender() {
+         try{
+        Connection  con =  DatabaseHelper.openConnection();
+            String sql=" select Sex, count(*) as soluongnamnu from Bill group by Sex ";
+            List<PhantichGender> list=new  ArrayList<>();
+              PreparedStatement ps= (PreparedStatement) con.prepareCall(sql);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+                PhantichGender phantichgender= new PhantichGender();
+                phantichgender.setGender(rs.getInt("Sex"));
+                phantichgender.setSoluongnamnu(rs.getInt("soluongdangky"));
+                list.add(phantichgender);
             }
             ps.close();
             con.close();

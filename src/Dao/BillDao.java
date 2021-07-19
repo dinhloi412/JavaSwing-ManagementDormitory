@@ -62,7 +62,26 @@ public class BillDao {
         }
         
     }
-      
+        public boolean updateCheckRoom1(RoomModel rm) throws Exception
+    {
+        
+        String sql="{tru1(?)}";
+    
+        try(
+            Connection con= DatabaseHelper.openConnection();
+            CallableStatement  psmt=con.prepareCall(sql);
+            )
+            
+        {
+            
+          
+            psmt.setInt(1, rm.getIDRooms());
+            
+            
+            return psmt.executeUpdate()>0;
+        }
+        
+    }
       public boolean update(BillModel bm) throws Exception
     {
         
@@ -145,7 +164,7 @@ public class BillDao {
                     bm.setIDStdudent(rs.getInt("IDStdudent"));
                     bm.setIDRooms(rs.getInt("IDRooms"));
                     bm.setFullName(rs.getString("FullName"));
-                    bm.setIDRooms(rs.getInt("Month"));
+                    bm.setMonth(rs.getInt("Month"));
                     bm.setPrice1(rs.getInt("Price1"));
                     bm.setCategory(rs.getString("Category"));
                     bm.setPrice2(rs.getInt("Price2"));      
@@ -183,7 +202,7 @@ public class BillDao {
                     bm.setIDStdudent(rs.getInt("IDStdudent"));
                     bm.setIDRooms(rs.getInt("IDRooms"));
                     bm.setFullName(rs.getString("FullName"));
-                    bm.setIDRooms(rs.getInt("Month"));
+                    bm.setMonth(rs.getInt("Month"));
                     bm.setPrice1(rs.getInt("Price1"));
                     bm.setCategory(rs.getString("Category"));
                     bm.setPrice2(rs.getInt("Price2"));  
