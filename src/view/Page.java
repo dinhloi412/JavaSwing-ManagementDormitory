@@ -96,6 +96,7 @@ private JPanel childPanel;
        if(ShareData.nguoidangnhap.getRole().equals("Staff"))
        {
            kButton7.setEnabled(false);
+           kButton4.setEnabled(false);
        }
     }
     private void MouseHand()

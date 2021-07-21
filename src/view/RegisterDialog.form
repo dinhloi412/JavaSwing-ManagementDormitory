@@ -36,10 +36,10 @@
     <Container class="com.k33ptoo.components.KGradientPanel" name="kGradientPanel1">
       <Properties>
         <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="a2" red="4c" type="rgb"/>
+          <Color blue="c3" green="60" red="83" type="rgb"/>
         </Property>
         <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6f" green="b2" red="67" type="rgb"/>
+          <Color blue="91" green="bf" red="2e" type="rgb"/>
         </Property>
       </Properties>
 
@@ -127,7 +127,7 @@
         <Component class="javax.swing.JPasswordField" name="txtPassword">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ac" green="a7" red="55" type="rgb"/>
+              <Color blue="b2" green="7d" red="67" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -148,7 +148,7 @@
         <Component class="javax.swing.JTextField" name="txtUsernname">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ac" green="a7" red="55" type="rgb"/>
+              <Color blue="b2" green="7d" red="67" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -282,7 +282,7 @@
             </Property>
             <Property name="kAllowGradient" type="boolean" value="false"/>
             <Property name="kBackGroundColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c9" green="a2" red="4c" type="rgb"/>
+              <Color blue="c3" green="60" red="83" type="rgb"/>
             </Property>
             <Property name="kHoverColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="91" green="79" red="3b" type="rgb"/>
@@ -312,7 +312,7 @@
         <Component class="javax.swing.JTextField" name="txtRole">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ac" green="a7" red="55" type="rgb"/>
+              <Color blue="b2" green="7d" red="67" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>

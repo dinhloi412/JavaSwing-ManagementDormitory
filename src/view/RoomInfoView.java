@@ -45,9 +45,10 @@ public class RoomInfoView extends javax.swing.JPanel {
      */
     public RoomInfoView() {
         initComponents();
-        
+        initTable1();
         initTable();
         LoadDatatoTable();
+        LoadDatatoTable1();
         menu.add(jPanel3);
    
     }
@@ -80,6 +81,32 @@ public class RoomInfoView extends javax.swing.JPanel {
             });
             }
             tblModel.fireTableDataChanged();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), "Lỗi");
+        }
+    }
+     private  void initTable1()
+     {
+         tblModel1= new DefaultTableModel();
+        tblModel1.setColumnIdentifiers(new String[]{"IDRooms","IDStudent","FullName"});
+        jTable1111.setModel(tblModel1);
+     }
+      private void LoadDatatoTable1()
+    {
+        try {
+            BillDao dao= new BillDao();
+            List<BillModel> list=dao.FindByAll();
+            tblModel1.setRowCount(0);
+            for(BillModel it:list)
+            {
+                tblModel1.addRow(new Object[]{
+                it.getIDRooms(),it.getIDStdudent(),it.getFullName()
+                
+            });
+            }
+            tblModel1.fireTableDataChanged();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -165,7 +192,6 @@ public class RoomInfoView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnSearch = new com.k33ptoo.components.KButton();
-        jTextField2 = new javax.swing.JTextField();
 
         jList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { " " };
@@ -229,8 +255,8 @@ public class RoomInfoView extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -365,12 +391,6 @@ public class RoomInfoView extends javax.swing.JPanel {
             }
         });
 
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField2KeyReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout kGradientPanel8Layout = new javax.swing.GroupLayout(kGradientPanel8);
         kGradientPanel8.setLayout(kGradientPanel8Layout);
         kGradientPanel8Layout.setHorizontalGroup(
@@ -378,9 +398,7 @@ public class RoomInfoView extends javax.swing.JPanel {
             .addGroup(kGradientPanel8Layout.createSequentialGroup()
                 .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel8Layout.createSequentialGroup()
-                        .addGap(550, 550, 550)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(682, 682, 682)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel8Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -395,9 +413,7 @@ public class RoomInfoView extends javax.swing.JPanel {
             kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(kGradientPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(kGradientPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -463,61 +479,9 @@ public class RoomInfoView extends javax.swing.JPanel {
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-//           try {
-//            BillDao dao= new BillDao();
-//            BillModel bm= dao.FindByIDBill(Integer.parseInt(txtSearch.getText()));
-//            if(bm!=null)
-//            {
-//                txtIDStudent.setText(String.format("%d", bm.getIDStdudent()));
-//                txtFullName.setText(bm.getFullName());
-//                cmbRoom.setSelectedItem(bm.getIDRooms());
-////                cmbMonth.setSelectedItem(bm.getMonth());
-//                txtPrice1.setText(String.format("%d",bm.getPrice1()));
-//                txtPrice2.setText(String.format("%d",bm.getPrice2()));
-//                txtDate.setDate(bm.getDate());
-//                
-//                
-//                
-//            }else
-//            {
-//                MessageDialogHelper.showErrorDialog(parentFrom, "Không tìm thấy hoá đơn nào","Thông báo");
-//            }
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//             MessageDialogHelper.showErrorDialog(parentFrom, e.getMessage(), "Error");
-//        }
+         
             
     }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        if(jTextField2.getText().trim().equals(""))
-        {
-           
-            try {
-                Statement stmt= null;
-                
-                 Connection con= DatabaseHelper.openConnection();
-                String sql="select IDStdudent, FullName, IDRooms from dbo.Bill  where FullName like '"+jTextField2.getText().trim()+"%' ORDER BY FullName";
-                stmt=con.createStatement();
-                ResultSet rs= stmt.executeQuery(sql);
-                menu.show(jTextField2,0,jTextField2.getHeight());
-                
-                DefaultTableModel model= new DefaultTableModel();
-                model.setColumnIdentifiers(columname);
-                jTable1111.setModel(model);
-                while(rs.next())
-                {
-                    System.out.println(rs.getString(1));
-                   
-                }
-                 rs.close();
-                 con.close();
-            } catch (Exception ex) {
-               
-            }
-        }
-    }//GEN-LAST:event_jTextField2KeyReleased
    
 //    ArrayList<RoomModel> arrRoom;
 //    ArrayList<RoomModel> room;
@@ -556,7 +520,6 @@ public class RoomInfoView extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1111;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel10;

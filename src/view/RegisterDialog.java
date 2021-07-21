@@ -50,16 +50,16 @@ private Page parentFrom;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(76, 162, 205));
-        kGradientPanel1.setkStartColor(new java.awt.Color(103, 178, 111));
+        kGradientPanel1.setkEndColor(new java.awt.Color(131, 96, 195));
+        kGradientPanel1.setkStartColor(new java.awt.Color(46, 191, 145));
 
-        txtPassword.setBackground(new java.awt.Color(85, 167, 172));
+        txtPassword.setBackground(new java.awt.Color(103, 125, 178));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
         txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtPassword.setOpaque(false);
 
-        txtUsernname.setBackground(new java.awt.Color(85, 167, 172));
+        txtUsernname.setBackground(new java.awt.Color(103, 125, 178));
         txtUsernname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtUsernname.setForeground(new java.awt.Color(255, 255, 255));
         txtUsernname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -112,7 +112,7 @@ private Page parentFrom;
         kButton1.setText("Sign In");
         kButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         kButton1.setkAllowGradient(false);
-        kButton1.setkBackGroundColor(new java.awt.Color(76, 162, 201));
+        kButton1.setkBackGroundColor(new java.awt.Color(131, 96, 195));
         kButton1.setkHoverColor(new java.awt.Color(59, 121, 145));
         kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         kButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ private Page parentFrom;
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Role:");
 
-        txtRole.setBackground(new java.awt.Color(85, 167, 172));
+        txtRole.setBackground(new java.awt.Color(103, 125, 178));
         txtRole.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtRole.setForeground(new java.awt.Color(255, 255, 255));
         txtRole.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));

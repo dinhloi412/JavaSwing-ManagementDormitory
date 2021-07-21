@@ -149,7 +149,6 @@ private DefaultTableModel tblModel;
         );
 
         jDialog2.setBackground(new java.awt.Color(255, 255, 255));
-        jDialog2.setMaximumSize(new java.awt.Dimension(346, 520));
         jDialog2.setMinimumSize(new java.awt.Dimension(346, 520));
 
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
@@ -205,7 +204,11 @@ private DefaultTableModel tblModel;
         jLabel1.setText("Biiling");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 22, -1, -1));
 
+        kButton1.setForeground(new java.awt.Color(71, 120, 197));
         kButton1.setText("PRINT");
+        kButton1.setkAllowGradient(false);
+        kButton1.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        kButton1.setkPressedColor(new java.awt.Color(255, 255, 255));
         kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kButton1ActionPerformed(evt);
